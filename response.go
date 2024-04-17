@@ -35,7 +35,7 @@ type NormalTx struct {
 	BlockNumber       int     `json:"blockNumber,string"`
 	TimeStamp         Time    `json:"timeStamp"`
 	Hash              string  `json:"hash"`
-	Nonce             int     `json:"nonce,string"`
+	Nonce             int     `json:"nonce,string,omitempty"`
 	BlockHash         string  `json:"blockHash"`
 	TransactionIndex  int     `json:"transactionIndex,string"`
 	From              string  `json:"from"`
@@ -50,8 +50,8 @@ type NormalTx struct {
 	CumulativeGasUsed int     `json:"cumulativeGasUsed,string"`
 	GasUsed           int     `json:"gasUsed,string"`
 	Confirmations     int     `json:"confirmations,string"`
-	FunctionName      string  `json:"functionName"`
-	MethodId          string  `json:"methodId"`
+	// FunctionName      string  `json:"functionName"`
+	// MethodId          string  `json:"methodId"`
 }
 
 // InternalTx holds info from internal tx query
@@ -164,6 +164,11 @@ type ContractSource struct {
 	Proxy                string `json:"Proxy"`
 	Implementation       string `json:"Implementation"`
 	SwarmSource          string `json:"SwarmSource"`
+}
+type ContractDeployer struct {
+	ContractAddress string `json:"ContractAddress"`
+	ContractCreator string `json:"ContractCreator"`
+	TxHash          string `json:"TxHash"`
 }
 
 // ExecutionStatus holds info from query for transaction execution status

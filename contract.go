@@ -26,3 +26,12 @@ func (c *Client) ContractSource(address string) (source []ContractSource, err er
 	err = c.call("contract", "getsourcecode", param, &source)
 	return
 }
+
+func (c *Client) ContractDeployer(address string) (deployer []ContractDeployer, err error) {
+	param := M{
+		"contractaddresses": address,
+	}
+
+	err = c.call("contract", "getcontractcreation", param, &deployer)
+	return
+}
